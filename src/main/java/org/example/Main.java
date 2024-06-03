@@ -19,7 +19,8 @@ public class Main {
         a.update();
         a = Author.findById(69);
         System.out.println(a);
-        Author.create("Testas2", "Testaitis2");
+//        Author.create("Testas2", "Testaitis2");
+        Author.delete(71);
 
     }
 

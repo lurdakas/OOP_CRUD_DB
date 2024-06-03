@@ -95,7 +95,7 @@ public class Author {
         }
     }
     public static void delete(long id){
-        String query = "DELETE FROM `author` WHERE id = ?";
+        String query = "DELETE FROM `authors` WHERE id = ?";
         try {
             Connection con = Main.connect();
             PreparedStatement pst = con.prepareStatement(query);
