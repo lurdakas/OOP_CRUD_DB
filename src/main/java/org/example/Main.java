@@ -19,8 +19,13 @@ public class Main {
         a.update();
         a = Author.findById(69);
         System.out.println(a);
-//        Author.create("Testas2", "Testaitis2");
-        Author.delete(71);
+//        Author.create("Testas4", "Testaitis4");
+        Author.delete(74);
+        Author b = Author.findById(65);
+        System.out.println(b);
+        b.setName("Maja");
+        b.update();
+        System.out.println(b);
 
     }
 
@@ -33,9 +38,5 @@ public class Main {
             }
             return connection;
         }
-
-
-
-
     }
 

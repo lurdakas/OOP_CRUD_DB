@@ -70,12 +70,12 @@ public class Author {
             Connection con = Main.connect();
             PreparedStatement pst = con.prepareStatement(query);
             pst.setString(1, name);
-            pst.setString(2,surname);
+            pst.setString(2, surname);
             pst.executeUpdate();
             con.close();
             pst.close();
         }catch (Exception e){
-            System.out.println("Failed to retrieve author");
+            System.out.println("Failed to create author");
         }
     }
     public void update(){
@@ -84,8 +84,8 @@ public class Author {
             Connection con = Main.connect();
             PreparedStatement pst = con.prepareStatement(query);
             pst.setString(1, this.name);
-            pst.setString(2,this.surname);
-            pst.setLong(3,this.id);
+            pst.setString(2, this.surname);
+            pst.setLong(3, this.id);
             pst.executeUpdate();
             con.close();
             pst.close();
@@ -104,7 +104,7 @@ public class Author {
             con.close();
             pst.close();
         }catch (Exception e){
-            System.out.println("Failed to retrieve author");
+            System.out.println("Failed to delete author");
         }
     }
 
