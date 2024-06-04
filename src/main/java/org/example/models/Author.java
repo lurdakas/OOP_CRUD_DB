@@ -28,7 +28,6 @@ public class Author {
         ArrayList<Author> authors = new ArrayList<>();
         String query = "SELECT * FROM authors";
         try {
-
             Connection con = Main.connect();
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(query);
@@ -40,7 +39,7 @@ public class Author {
             stmt.close();
             rs.close();
         } catch (Exception e) {
-            System.out.println("kaboom!");
+            System.out.println("Failed to retrieve authors!");
         }
         return authors;
     }
