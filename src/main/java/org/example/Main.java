@@ -25,12 +25,6 @@ public class Main {
 //        System.out.println(a);
 //        Author.create("Testas4", "Testaitis4");
 //        Author.delete(74);
-//        Author b = Author.findById(65);
-//        System.out.println(b);
-//        b.setName("Maja");
-//        b.update();
-//        System.out.println(b);
-
 
         System.out.println();
         System.out.println("_______________");
@@ -44,66 +38,91 @@ public class Main {
             sc.nextLine();
             switch (item) {
                 case 1:
-
-                    Author.selectAll();
-                    System.out.println(Author.selectAll());
+                    printAuthors();
                     break;
-
                 case 2:
-
-                    System.out.println("Enter Authors Id");
-                    long id = sc.nextLong();
-                    Author author = findById(id);
-                    if (author != null) {
-                        System.out.println(findById(id));
-                    } else {
-                        System.out.println("No author found with Id: " + id);
-                    }
+                    printID(sc);
                     break;
 
                 case 3:
-
-                    System.out.println("Enter New Authors Name");
-                    String autor = sc.nextLine();
-                    System.out.println("Enter New Authors Surname");
-                    String autorius = sc.nextLine();
-                    Author.create(autor, autorius);
-                    System.out.println("Authors Added");
+                    printNewAuthor(sc);
                     break;
 
                 case 4:
-
-                    System.out.println("Enter The Authors Id That You Wish To Update");
-                    id = sc.nextLong();
-                    sc.nextLine();
-                    Author aut0 = findById(id);
-                    System.out.println(Author.findById(id));
-
-                    if (id != 0) {
-                        System.out.println("Enter New Authors Name");
-                        String autor1 = sc.nextLine();
-                        System.out.println("Enter New Authors Surname");
-                        String autor2 = sc.nextLine();
-                        aut0.setName(autor1);
-                        aut0.setSurname(autor2);
-                        aut0.update();
-                        System.out.println("Author updated");
-                    }
+                    updateAuthor(sc);
                     break;
+
                 case 5:
-                    Author.delete();
+                    deleteAuthor(sc);
                     break;
-
-
-
-
 
                 case 6:
                     System.exit(0);
-            }
 
+            }
         }
     }
+
+
+
+
+    public static void printAuthors(){
+
+        Author.selectAll();
+        System.out.println(Author.selectAll());
+    }
+
+    public static void printID(Scanner sc){
+
+        System.out.println("Enter Authors Id");
+        long id = sc.nextLong();
+        Author author = findById(id);
+        if (author != null) {
+            System.out.println(findById(id));
+        } else {
+            System.out.println("No author found with Id: " + id);
+        }
+
+    }
+    public static void printNewAuthor(Scanner sc){
+        System.out.println("Enter New Authors Name");
+        String autor = sc.nextLine();
+        System.out.println("Enter New Authors Surname");
+        String autorius = sc.nextLine();
+        Author.create(autor, autorius);
+        System.out.println("Authors Added");
+
+    }
+    public static void updateAuthor(Scanner sc){
+        System.out.println("Enter The Authors Id That You Wish To Update");
+        long id = sc.nextLong();
+        sc.nextLine();
+        Author aut0 = findById(id);
+        System.out.println(Author.findById(id));
+
+        if (id != 0) {
+            System.out.println("Enter New Authors Name");
+            String autor1 = sc.nextLine();
+            System.out.println("Enter New Authors Surname");
+            String autor2 = sc.nextLine();
+            aut0.setName(autor1);
+            aut0.setSurname(autor2);
+            aut0.update();
+            System.out.println("Author updated");
+        }
+
+    }
+    public static void deleteAuthor(Scanner sc){
+        System.out.println("Enter Authors Id You Wish To Delete");
+        long id = sc.nextLong();
+        sc.nextLine();
+        Author autor1 = findById(id);
+        System.out.println(Author.findById(id));
+        Author.delete(id);
+        System.out.println("Author Has Been Deleted");
+
+    }
+
 
 
 
