@@ -77,6 +77,7 @@ public class Author {
             System.out.println("Failed to create author");
         }
     }
+
     public void update(){
         String query = "UPDATE `authors` SET `name`=?,`surname`=? WHERE id = ?";
         try {

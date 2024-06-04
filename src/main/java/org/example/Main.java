@@ -9,6 +9,8 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import static org.example.models.Author.findById;
+
 
 public class Main {
 
@@ -42,53 +44,65 @@ public class Main {
             sc.nextLine();
             switch (item) {
                 case 1:
+
                     Author.selectAll();
                     System.out.println(Author.selectAll());
                     break;
 
                 case 2:
+
                     System.out.println("Enter Authors Id");
-                    long id = Long.parseLong(sc.nextLine());
-                    Author author = Author.findById(id);
+                    long id = sc.nextLong();
+                    Author author = findById(id);
                     if (author != null) {
-                        System.out.println(Author.findById(id));
-                    }else {
+                        System.out.println(findById(id));
+                    } else {
                         System.out.println("No author found with Id: " + id);
                     }
                     break;
 
                 case 3:
+
                     System.out.println("Enter New Authors Name");
                     String autor = sc.nextLine();
                     System.out.println("Enter New Authors Surname");
                     String autorius = sc.nextLine();
-                    Author.create(autor , autorius);
+                    Author.create(autor, autorius);
                     System.out.println("Authors Added");
                     break;
+
                 case 4:
-                    Author.update();
 
+                    System.out.println("Enter The Authors Id That You Wish To Update");
+                    id = sc.nextLong();
+                    sc.nextLine();
+                    Author aut0 = findById(id);
+                    System.out.println(Author.findById(id));
 
+                    if (id != 0) {
+                        System.out.println("Enter New Authors Name");
+                        String autor1 = sc.nextLine();
+                        System.out.println("Enter New Authors Surname");
+                        String autor2 = sc.nextLine();
+                        aut0.setName(autor1);
+                        aut0.setSurname(autor2);
+                        aut0.update();
+                        System.out.println("Author updated");
+                    }
                     break;
-
-
-
-
-
-
                 case 5:
-                    Author.delete(67);
+                    Author.delete();
                     break;
+
+
+
+
+
                 case 6:
                     System.exit(0);
             }
+
         }
-
-
-
-
-
-
     }
 
 
